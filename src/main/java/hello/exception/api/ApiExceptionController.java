@@ -1,5 +1,6 @@
 package hello.exception.api;
 
+import hello.exception.exception.BadRequestException;
 import hello.exception.exception.UserException;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,7 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 public class ApiExceptionController {
-    
+
+    @GetMapping("/api/response-status-ex1")
+    public String responseStatusEx1() {
+        throw new BadRequestException();
+    }
+
     @GetMapping("/api/members/{id}")
     public MemberDto getMember(@PathVariable("id") String id) {
         
